@@ -2,26 +2,29 @@
   <img width="400" src="public/revoke.png">
 </p>
 
-> *Do you want to swap 10 DAI for ETH? Sure thing, we'll just need your approval to spend a BAJILLION DOLLARS!*
+### DeFi on [MultiVAC](https://mtv.ac) is just getting started, stay safe out there.  
 
-Do you ever feel uneasy about the different dapps that you gave approval to spend ERC20 tokens from your account? [revoke.cash](https://revoke.cash) allows you to inspect all the contracts you've approved to spend money on your behalf, and revoke their access for the ones you no longer need. If you don't want to completely revoke access, it's also possible to update the amount they are allowed to spend instead.
+[revoke.mtv](https://0x13e.github.io/mtv.revoke/) provides a simple tool to revoke an authorized spender from your wallet on the MultiVAC blockchain.
+ 
+#### Interacted with a new DEX?
 
-This repository also includes the [`dapp-contract-list`](/public/dapp-contract-list/), which is a mapping of smart contract addresses to the corresponding application. This allows revoke.cash to display application names like Aave or Compound instead of their smart contract addresses. This list can be used by any other application. The name mapping for an address can be accessed through either of these URLs:
+You authorized one or more of their contracts to spend a given amount to perform the swap. Often the request you approve in your dApp browser is set to unlimited. Consider limiting or revoking the spending amount outright. 
 
-- `https://raw.githubusercontent.com/rkalis/revoke.cash/master/public/dapp-contract-list/{chain}/{address}.json`
-- `https://revoke.cash/dapp-contract-list/{chain}/{address}.json`
+***Future Plans***
 
-Revoke.cash currently only works for Ethereum (mainnet and testnets), xDAI and Avalanche.
+Host newly deployed MTV smart contracts and provide a simple byte-code comparison tool and a link to the contract source. While this doesn't guarantee you're interacting with a good contract, the source will at least be available to inspect before approving any functions.
 
-If you want to learn more about (unlimited) ERC20 allowances, I wrote an article on my blog: [Unlimited ERC20 allowances considered harmful](https://kalis.me/unlimited-erc20-allowances/).
+****
 
 ## Running locally
 ```
-git clone git@github.com:rkalis/revoke.cash.git
-cd revoke.cash
+git clone git@github.com:0x13e/mtv.revoke.git
+cd mtv.revoke
 yarn
 yarn start
 ```
 
 ## Credits
-Website created by Rosco Kalis after discussing the idea with Paul Berg at Devcon 5 in Osaka. Uses [ethers.js](https://github.com/ethers-io/ethers.js) for all Ethereum-related operations. Filters out unverified tokens using the [Kleros T2CR](https://tokens.kleros.io/tokens). Built with React, Bootstrap and TypeScript.
+Forked from the [revoke.cash](https://github.com/rkalis/revoke.cash) project for Ethereum mainnet/testnet contract management.
+
+**Please consider donating to him if you find this tool useful.**
