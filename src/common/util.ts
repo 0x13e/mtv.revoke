@@ -170,7 +170,6 @@ function getTokenListUrl(chainId: number, standard: TokenStandard = 'ERC20'): st
       137: 'https://unpkg.com/quickswap-default-token-list@1.0.28/build/quickswap-default.tokenlist.json',
       42161: 'https://bridge.arbitrum.io/token-list-42161.json',
       43114: 'https://raw.githubusercontent.com/pangolindex/tokenlists/main/aeb.tokenlist.json',
-      62621: 'http://localhost:8000/mtv.json'
     },
     ERC721: {
       1: 'https://raw.githubusercontent.com/vasa-develop/nft-tokenlist/master/mainnet_curated_tokens.json'

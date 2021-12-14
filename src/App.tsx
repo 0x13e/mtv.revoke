@@ -144,7 +144,7 @@ class App extends Component<{}, State> {
     // If no provider is set, this means that the browser is not web3 enabled
     // and the fallback Infura provider is currently rate-limited
     if (!this.state.provider) {
-      alert('Please use a web3 enabled browser to use revoke.cash')
+      alert('Please use a web3 enabled browser to use mtv.revoke')
       this.setState({ inputAddressOrName: undefined })
       return
     }
