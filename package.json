@@ -1,7 +1,7 @@
 {
   "name": "mtv-revoke",
   "description": "Revoke third-party access to your MRC20/MRC721 tokens",
-  "homepage": "https://0x13e.github.io/revoke.cash",
+  "homepage": "https://0x13e.github.io/mtv.revoke",
   "version": "0.1.1",
   "browserslist": {
     "production": [
