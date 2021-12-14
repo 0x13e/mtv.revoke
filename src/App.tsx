@@ -232,7 +232,7 @@ class App extends Component<{}, State> {
   renderFooter() {
     return (
       <div className="footer">
-        <p>Forked from <a href="https://kalis.me/">Rosco Kalis's</a> (<a href="https://github.com/rkalis/revoke.cash">revoke.cash</a>)<br/>Please consider donating to him if you find this useful</p>
+        <p><a href="https://github.com/0x13e/mtv.revoke" className="cyanLink">GitHub Link</a> | Forked from <a href="https://kalis.me/" className="cyanLink">Rosco Kalis's</a> (<a href="https://github.com/rkalis/revoke.cash" className="cyanLink">revoke.cash</a>)<br/><b>Please consider donating to him if you find this useful</b></p>
       </div>
     )
   }
