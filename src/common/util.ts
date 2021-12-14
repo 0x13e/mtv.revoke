@@ -83,7 +83,17 @@ export function getExplorerUrl(chainId: number): string | undefined {
     42161: 'https://arbiscan.io/address',
     43113: 'https://cchain.explorer.avax-test.network/address',
     43114: 'https://cchain.explorer.avax.network/address',
+    62621: 'https://e.mtv.ac/address',
     80001: 'https://explorer-mumbai.maticvigil.com/address'
+  }
+
+  return mapping[chainId]
+}
+
+export function getExplorerTokenUrl(chainId: number): string | undefined {
+  // Includes all Etherscan, BScScan, BlockScout, Matic, Avalanche explorers
+  const mapping = {
+    62621: 'https://e.mtv.ac/token',
   }
 
   return mapping[chainId]
@@ -108,6 +118,7 @@ export function getDappListName(chainId: number): string | undefined {
     10000: 'smartbch',
     42161: 'arbitrum',
     43114: 'avalanche',
+    62621: 'multivac',
   }
 
   return mapping[chainId]
@@ -115,7 +126,7 @@ export function getDappListName(chainId: number): string | undefined {
 
 export function isSupportedNetwork(chainId: number): boolean {
   // Supported for now are only ETH, xDAI, SmartBCH, Arbitrum & AVAX. Other chains fail on the RPC calls.
-  const supportedNetworks = [1, 3, 4, 5, 42, 100, 10000, 42161, 43113, 43114]
+  const supportedNetworks = [1, 3, 4, 5, 42, 100, 10000, 42161, 43113, 43114,62621]
   return supportedNetworks.includes(chainId);
 }
 
@@ -158,7 +169,8 @@ function getTokenListUrl(chainId: number, standard: TokenStandard = 'ERC20'): st
       100: 'https://tokens.honeyswap.org',
       137: 'https://unpkg.com/quickswap-default-token-list@1.0.28/build/quickswap-default.tokenlist.json',
       42161: 'https://bridge.arbitrum.io/token-list-42161.json',
-      43114: 'https://raw.githubusercontent.com/pangolindex/tokenlists/main/aeb.tokenlist.json'
+      43114: 'https://raw.githubusercontent.com/pangolindex/tokenlists/main/aeb.tokenlist.json',
+      62621: 'http://localhost:8000/mtv.json'
     },
     ERC721: {
       1: 'https://raw.githubusercontent.com/vasa-develop/nft-tokenlist/master/mainnet_curated_tokens.json'
@@ -179,7 +191,7 @@ export async function getTokenIcon(tokenAddress: string, chainId: number, tokenM
   const networkName = getTrustWalletName(chainId)
   const iconFromTrust = networkName && `${TRUSTWALLET_BASE_URL}/${networkName}/assets/${normalisedAddress}/logo.png`
 
-  const icon = iconFromMapping || iconFromTrust || 'erc20.png'
+  const icon = iconFromMapping || iconFromTrust || 'mrc.png'
 
   return icon
 }

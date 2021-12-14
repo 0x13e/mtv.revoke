@@ -1,7 +1,8 @@
 {
-  "name": "revoke.cash",
-  "description": "Revoke third-party access to your ERC20 tokens",
-  "version": "0.1.0",
+  "name": "mtv-revoke",
+  "description": "Revoke third-party access to your MRC20/MRC721 tokens",
+  "homepage": "https://0x13e.github.io/revoke.cash",
+  "version": "0.1.1",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -25,6 +26,7 @@
     "bootstrap": "^4.5.0",
     "bootstrap-switch-button-react": "^1.2.0",
     "ethers": "^5.0.14",
+    "gh-pages": "^3.2.3",
     "node-sass": "^4.14.1",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.1",
@@ -40,6 +42,8 @@
   "private": true,
   "scripts": {
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
     "start": "react-scripts start",
     "test": "react-scripts test"

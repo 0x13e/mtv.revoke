@@ -26,7 +26,7 @@ class Dashboard extends Component<Props, State> {
   state: State = {
     tokenStandard: 'ERC20',
     filterRegisteredTokens: true,
-    filterZeroBalances: true,
+    filterZeroBalances: false,
     loading: true,
   }
 
@@ -56,21 +56,26 @@ class Dashboard extends Component<Props, State> {
 
     return (
       <div className="Dashboard">
-        {this.renderSelectionSwitch()}
-        {this.renderRegistrationCheckbox()}
-        {this.renderZeroBalancesCheckbox()}
-        {this.renderErc20TokenList()}
+      <div className="controlDiv">
+        <div className="checkSwitches">
+            {this.renderSelectionSwitch()}
+        </div>
+        <div className="registrationCheckbox">
+            {this.renderRegistrationCheckbox()}
+        </div>
+      </div>
+      {this.renderErc20TokenList()}
       </div>
     )
   }
 
   renderSelectionSwitch() {
     return (
-      <div style={{ marginBottom: '10px' }}>
+      <div className="tokenSwitch" style={{ marginBottom: '10px' }}>
         <BootstrapSwitchButton
           checked={this.state.tokenStandard === 'ERC20'}
-          onlabel='ERC20'
-          offlabel='ERC721'
+          onlabel='MRC20'
+          offlabel='MRC721'
           onstyle="primary"
           offstyle="primary"
           width={100}
@@ -111,7 +116,7 @@ class Dashboard extends Component<Props, State> {
 
   renderZeroBalancesCheckbox() {
     return (
-      <div>
+      <div className="zeroBalances">
         <span style={{ marginRight: 5 }}>Filter out zero balances</span>
         <input type="checkbox" checked={this.state.filterZeroBalances} onChange={this.handleZeroBalancesCheckboxChange} />
       </div>

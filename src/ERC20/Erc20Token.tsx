@@ -3,7 +3,7 @@ import { getAddress, hexDataSlice } from 'ethers/lib/utils'
 import React, { Component, ReactNode } from 'react'
 import ClipLoader from 'react-spinners/ClipLoader'
 import { Erc20TokenData } from '../common/interfaces'
-import { compareBN, addressToAppName, shortenAddress, getDappListName, getExplorerUrl, lookupEnsName, toFloat } from '../common/util'
+import { compareBN, addressToAppName, shortenAddress, getDappListName, getExplorerUrl, getExplorerTokenUrl, lookupEnsName, toFloat } from '../common/util'
 import { Button, Form, InputGroup, OverlayTrigger, Tooltip } from 'react-bootstrap'
 
 type Props = {
@@ -169,7 +169,7 @@ class Erc20Token extends Component<Props, State> {
     const balanceString = toFloat(Number(balance), decimals)
     if (balanceString === '0.000' && this.state.allowances.length === 0) return null
 
-    return (<div className="Token">{this.renderTokenOrLoading()}</div>)
+    return (<tr className="Token">{this.renderTokenOrLoading()}</tr>)
   }
 
   renderTokenOrLoading() {
@@ -182,65 +182,85 @@ class Erc20Token extends Component<Props, State> {
 
   renderToken() {
     return (
-      <div>
-        {this.renderTokenBalance()}
-        <div className="AllowanceList">{this.renderAllowanceList()}</div>
+      <div className="TokenContentDiv">
+        <table className="TokenContentTable">
+          <tbody>
+            {this.renderAllowanceList()}
+          </tbody>
+        </table>
       </div>
     )
   }
 
   renderTokenBalance() {
-    const { symbol, balance, decimals } = this.props.token
-
-    const backupImage = (ev) => { (ev.target as HTMLImageElement).src = 'erc20.png'}
-    const img = (<img src={this.props.token.icon} alt="" width="20px" onError={backupImage} />)
-
-    return (<div className="TokenBalance my-auto">{img} {symbol}: {toFloat(Number(balance), decimals)}</div>)
-  }
-
-  renderAllowanceList() {
-    if (this.state.allowances.length === 0) return (<div className="Allowance">No allowances</div>)
-
-    const allowances = this.state.allowances.map((allowance, i) => this.renderAllowance(allowance, i))
-    return allowances
-  }
-
-  renderAllowance(allowance: Allowance, i: number) {
+    const { symbol, balance, decimals,contract } = this.props.token
+    const explorerUrl = `${getExplorerTokenUrl(this.props.chainId)}/${contract.address}`
     return (
-      <Form inline className="Allowance" key={allowance.spender}>
-        {this.renderAllowanceText(allowance)}
-        {this.renderRevokeButton(allowance)}
-        {this.renderUpdateInputGroup(allowance, i)}
-      </Form>
+        <tr>
+          <td></td>
+          <td className="tokenName"><a href={explorerUrl} style={{ color: 'white' }}>{symbol}</a></td>
+          <td className="tokenValue"> {toFloat(Number(balance), decimals)}</td>
+        </tr>
     )
   }
 
-  renderAllowanceText(allowance: Allowance) {
-    const spender = allowance.spenderAppName || allowance.ensSpender || allowance.spender
-    const shortenedSpender = allowance.spenderAppName || allowance.ensSpender || shortenAddress(allowance.spender)
+  renderAllowanceList() {
 
-    const explorerBaseUrl = getExplorerUrl(this.props.chainId)
+    if (this.state.allowances.length === 0) return (
+        <tr>
+          <td className="tokenIconColumn"></td>
+          <td className="tokenDataColumn">
+            <table className="tokenDataTable">
+              <tbody>
+                {this.renderTokenBalance()}
+                <tr className="spenderRow"><td className="spenderRevoke"></td><td className="spenderAddress" colSpan={2}><span className="monospace">No Spenders</span></td></tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+    )
 
-    const shortenedLink = explorerBaseUrl
-      ? (<a className="monospace" href={`${explorerBaseUrl}/${allowance.spender}`}>{shortenedSpender}</a>)
-      : shortenedSpender
-
-    const regularLink = explorerBaseUrl
-      ? (<a className="monospace" href={`${explorerBaseUrl}/${allowance.spender}`}>{spender}</a>)
-      : spender
-
-    // Display separate spans for the regular and shortened versions of the spender address
-    // The correct one is selected using CSS media-queries
+    const allowances = this.state.allowances.map((allowance, i) => this.renderAllowance(allowance, i))
     return (
-      <Form.Label className="AllowanceText">
-        <span className="AllowanceTextSmallScreen">
-          {this.formatAllowance(allowance.allowance)} allowance to&nbsp;{shortenedLink}
-        </span>
+        <tr>
+          <td className="tokenIconColumn"></td>
+          <td className="tokenDataColumn">
+            <table className="tokenDataTable">
+              <tbody>
+                {this.renderTokenBalance()}
+                {allowances}
+              </tbody>
+            </table>
+          </td>
+        </tr>
+    )
+  }
 
-        <span className="AllowanceTextBigScreen">
-          {this.formatAllowance(allowance.allowance)} allowance to&nbsp;{regularLink}
-        </span>
-      </Form.Label>
+  renderAllowance(allowance: Allowance, i: number) {
+      const spender = allowance.spenderAppName || allowance.ensSpender || allowance.spender
+      const shortenedSpender = allowance.spenderAppName || allowance.ensSpender || shortenAddress(allowance.spender)
+
+      const explorerBaseUrl = getExplorerUrl(this.props.chainId)
+
+      const shortenedLink = explorerBaseUrl
+        ? (<a className="monospace" href={`${explorerBaseUrl}/${allowance.spender}`}>{shortenedSpender}</a>)
+        : shortenedSpender
+
+      const regularLink = explorerBaseUrl
+        ? (<a className="monospace" href={`${explorerBaseUrl}/${allowance.spender}`}>{spender}</a>)
+        : spender
+
+    return (
+        <tr className="spenderRow">
+          <td className="spenderRevoke">
+            <Form inline className="Allowance" key={allowance.spender}> {this.renderRevokeButton(allowance)}
+            </Form>
+          </td>
+          <td className="spenderAddress"><span className="AllowanceTextBigScreen">{regularLink}</span><span className="AllowanceTextSmallScreen">{shortenedLink}</span>
+          </td>
+          <td className="spenderLimit"><span className="monospace"> {this.formatAllowance(allowance.allowance)}</span>
+          </td>
+        </tr>
     )
   }
 
@@ -251,12 +271,12 @@ class Erc20Token extends Component<Props, State> {
       size="sm" disabled={!canRevoke}
       className="RevokeButton"
       onClick={() => this.revoke(allowance)}
-    >Revoke</Button>)
+    ></Button>)
 
     // Add tooltip if the button is disabled
     if (!canRevoke) {
       const tooltip = (<Tooltip id={`revoke-tooltip-${this.props.token.contract.address}`}>You can only revoke allowances of the connected account</Tooltip>)
-      revokeButton = (<OverlayTrigger overlay={tooltip}><span>{revokeButton}</span></OverlayTrigger>)
+      revokeButton = (<OverlayTrigger overlay={tooltip}><td><span>{revokeButton}</span></td></OverlayTrigger>)
     }
 
     return revokeButton

@@ -139,8 +139,7 @@ class Erc721TokenList extends Component<Props, State> {
         />
       ))
 
-    // return (<div className="TokenList">Hello</div>)
-    return (<div className="TokenList">{tokenComponents}</div>)
+    return (<table className="TokenList"><tbody>{tokenComponents}</tbody></table>)
   }
 }
 

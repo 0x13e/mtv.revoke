@@ -36,3 +36,4 @@ export interface TokenMapping {
 }
 
 export type TokenStandard = 'ERC20' | 'ERC721'
+export type VisibleZero = 'Show' | 'Hide'
