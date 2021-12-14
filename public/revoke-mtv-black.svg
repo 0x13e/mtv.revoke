@@ -13,7 +13,7 @@
    viewBox="0 0 1245.4503 270.69443"
    preserveAspectRatio="xMidYMid meet"
    id="svg915"
-   sodipodi:docname="revoke-mtv.svg"
+   sodipodi:docname="revoke.svg"
    inkscape:version="1.0.2 (e86c8708, 2021-01-15)">
   <defs
      id="defs919" />
@@ -30,15 +30,14 @@
      inkscape:window-height="948"
      id="namedview917"
      showgrid="false"
-     inkscape:zoom="0.68587085"
-     inkscape:cx="760.30157"
-     inkscape:cy="248.62942"
-     inkscape:window-x="210"
-     inkscape:window-y="92"
+     inkscape:zoom="0.38428954"
+     inkscape:cx="337.80379"
+     inkscape:cy="96.706603"
+     inkscape:window-x="506"
+     inkscape:window-y="130"
      inkscape:window-maximized="0"
-     inkscape:current-layer="text848"
-     inkscape:document-rotation="0"
-     inkscape:pagecheckerboard="true" />
+     inkscape:current-layer="svg915"
+     inkscape:document-rotation="0" />
   <metadata
      id="metadata895">
 Created by potrace 1.15, written by Peter Selinger 2001-2017
@@ -48,7 +47,6 @@ Created by potrace 1.15, written by Peter Selinger 2001-2017
     <dc:format>image/svg+xml</dc:format>
     <dc:type
        rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-    <dc:title></dc:title>
   </cc:Work>
 </rdf:RDF>
 </metadata>
@@ -59,27 +57,27 @@ Created by potrace 1.15, written by Peter Selinger 2001-2017
      style="font-size:432.066px;line-height:1.25;font-family:Teko;-inkscape-font-specification:Teko;stroke-width:2.25035">
     <path
        d="m 346.14012,163.13588 v 109.3127 H 307.25418 V 1.9752559 h 88.57353 q 40.18214,0 40.18214,38.0218091 V 124.682 q 0,32.83702 -28.94843,37.58975 l 42.77454,110.17683 h -41.9104 l -40.61421,-109.3127 z m 0,-129.619805 v 98.511045 h 38.02181 q 7.77718,0 10.36958,-2.16033 2.5924,-2.59239 2.5924,-10.36958 V 46.045989 q 0,-7.777188 -2.5924,-9.937518 -2.5924,-2.592396 -10.36958,-2.592396 z"
-       style="font-size:432.06599999999997408px;stroke-width:2.25035;fill:#ffffff"
+       style="font-size:432.066px;stroke-width:2.25035"
        id="path2580" />
     <path
        d="m 517.8796,240.90776 h 78.20395 v 31.54082 H 478.56159 V 1.9752559 h 114.4975 V 33.516075 H 517.8796 v 83.388735 h 62.21751 v 31.54082 H 517.8796 Z"
-       style="font-size:432.06599999999997408px;stroke-width:2.25035;fill:#ffffff"
+       style="font-size:432.066px;stroke-width:2.25035"
        id="path2582" />
     <path
        d="m 719.54641,1.9752559 h 40.18214 L 710.90509,272.44858 H 655.60064 L 606.77718,1.9752559 h 40.18214 L 682.8208,236.5871 Z"
-       style="font-size:432.06599999999997408px;stroke-width:2.25035;fill:#ffffff"
+       style="font-size:432.066px;stroke-width:2.25035"
        id="path2584" />
     <path
        d="m 822.49965,1.9752559 h 47.95932 q 40.18214,0 40.18214,38.0218091 V 234.42677 q 0,38.02181 -40.18214,38.02181 h -47.95932 q -40.61421,0 -40.61421,-38.02181 V 39.997065 q 0,-38.0218091 40.61421,-38.0218091 z M 871.75517,228.37784 V 46.045989 q 0,-7.777188 -2.5924,-9.937518 -2.59239,-2.592396 -10.36958,-2.592396 h -25.05983 q -7.77719,0 -10.36958,2.592396 -2.16033,2.16033 -2.16033,9.937518 V 228.37784 q 0,7.77719 2.16033,10.36959 2.59239,2.16033 10.36958,2.16033 h 25.05983 q 7.77719,0 10.36958,-2.16033 2.5924,-2.5924 2.5924,-10.36959 z"
-       style="font-size:432.06599999999997408px;stroke-width:2.25035;fill:#ffffff"
+       style="font-size:432.066px;stroke-width:2.25035"
        id="path2586" />
     <path
        d="m 1092.7907,1.9752559 -57.0327,135.6687241 56.6006,134.8046 h -42.3424 L 995.14377,137.64398 1050.8803,1.9752559 Z M 953.66543,272.44858 V 1.9752559 h 38.88594 V 272.44858 Z"
-       style="font-size:432.06599999999997408px;stroke-width:2.25035;fill:#ffffff"
+       style="font-size:432.066px;stroke-width:2.25035"
        id="path2588" />
     <path
        d="m 1159.2276,240.90776 h 78.2039 v 31.54082 H 1119.9096 V 1.9752559 h 114.4975 V 33.516075 h -75.1795 v 83.388735 h 62.2175 v 31.54082 h -62.2175 z"
-       style="font-size:432.06599999999997408px;stroke-width:2.25035;fill:#ffffff"
+       style="font-size:432.066px;stroke-width:2.25035"
        id="path2590" />
   </g>
   <path
