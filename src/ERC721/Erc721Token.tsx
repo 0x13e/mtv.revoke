@@ -157,7 +157,7 @@ class Erc721Token extends Component<Props, State> {
     const balanceString = String(balance)
     if (balanceString === '0' && this.state.allowances.length === 0) return null
 
-    return (<div className="Token">{this.renderTokenOrLoading()}</div>)
+    return (<tr className="Token">{this.renderTokenOrLoading()}</tr>)
   }
 
   renderTokenOrLoading() {
@@ -170,9 +170,12 @@ class Erc721Token extends Component<Props, State> {
 
   renderToken() {
     return (
-      <div>
-        {this.renderTokenBalance()}
-        <div className="AllowanceList">{this.renderAllowanceList()}</div>
+      <div className="TokenContentDiv">
+        <table className="TokenContentTable">
+          <tbody>
+        {this.renderAllowanceList()}
+          </tbody>
+        </table>
       </div>
     )
   }
@@ -180,27 +183,81 @@ class Erc721Token extends Component<Props, State> {
   renderTokenBalance() {
     const { symbol, balance, contract } = this.props.token
 
-    const backupImage = (ev) => { (ev.target as HTMLImageElement).src = 'erc721.png'}
-    const img = (<img src={this.props.token.icon} alt="" width="20px" onError={backupImage} />)
 
     const explorerUrl = `${getExplorerUrl(this.props.chainId)}/${contract.address}`
-
-    return (<div className="TokenBalance my-auto"><a href={explorerUrl} style={{ color: 'black' }}>{img} {symbol}: {String(balance)}</a></div>)
+    return (
+    	<tr>
+    		 <td></td>
+    		 <td className="tokenName">
+    		   <a href={explorerUrl} style={{ color: 'white' }}>{symbol}</a>
+    		 </td>
+    		 <td className="tokenValue">
+    		   {String(balance)}
+    		 </td>
+    	</tr>
+    )
   }
 
   renderAllowanceList() {
-    if (this.state.allowances.length === 0) return (<div className="Allowance">No allowances</div>)
+
+  	const backupImage = (ev) => { (ev.target as HTMLImageElement).src = 'erc721.png'}
+    const img = (<img src={this.props.token.icon} alt="" width="40px" onError={backupImage} />)
+
+    if (this.state.allowances.length === 0) return (
+      <tr>
+          <td className="tokenIconColumn721"></td>
+          <td className="tokenDataColumn">
+            <table className="tokenDataTable">
+              <tbody>
+                {this.renderTokenBalance()}
+                <tr className="spenderRow"><td className="spenderRevoke"></td><td className="spenderAddress" colSpan={2}><span className="monospace">No Spenders</span></td></tr>
+              </tbody>
+            </table>
+          </td>
+     </tr>
+    )
 
     const allowances = this.state.allowances.map((allowance, i) => this.renderAllowance(allowance, i))
-    return allowances
+    return (
+        <tr>
+          <td className="tokenIconColumn"></td>
+          <td className="tokenDataColumn">
+            <table className="tokenDataTable">
+              <tbody>
+                {this.renderTokenBalance()}
+                {allowances}
+              </tbody>
+            </table>
+          </td>
+        </tr>
+    )
   }
 
   renderAllowance(allowance: Allowance, i: number) {
-    return (
-      <Form inline className="Allowance" key={allowance.spender}>
-        {this.renderAllowanceText(allowance)}
-        {this.renderRevokeButton(allowance)}
-      </Form>
+      const spender = allowance.spenderAppName || allowance.ensSpender || allowance.spender
+      const shortenedSpender = allowance.spenderAppName || allowance.ensSpender || shortenAddress(allowance.spender)
+
+      const explorerBaseUrl = getExplorerUrl(this.props.chainId)
+
+      const shortenedLink = explorerBaseUrl
+        ? (<a className="monospace" href={`${explorerBaseUrl}/${allowance.spender}`}>{shortenedSpender}</a>)
+        : shortenedSpender
+
+      const regularLink = explorerBaseUrl
+        ? (<a className="monospace" href={`${explorerBaseUrl}/${allowance.spender}`}>{spender}</a>)
+        : spender
+
+	return (
+        <tr className="spenderRow">
+	  	  <td className="spenderRevoke">
+			<Form inline className="Allowance" key={allowance.spender}> {this.renderRevokeButton(allowance)}
+			</Form>
+	  	  </td>
+	  	  <td className="spenderAddress"><span className="AllowanceTextBigScreen">{regularLink}</span><span className="AllowanceTextSmallScreen">{shortenedLink}</span>
+	  	  </td>
+	  	  <td className="spenderLimit"><span className="monospace"> {this.renderAllowanceText(allowance)}</span>
+	      </td>
+        </tr>
     )
   }
 
@@ -221,35 +278,30 @@ class Erc721Token extends Component<Props, State> {
     // Display separate spans for the regular and shortened versions of the spender address
     // The correct one is selected using CSS media-queries
     return (
-      <Form.Label className="AllowanceText">
-        <span className="AllowanceTextSmallScreen">
-          Allowance for {this.formatAllowance(allowance.index)} to&nbsp;{shortenedLink}
-        </span>
+      <div>
+      <span className="AllowanceTextSmallScreen">{shortenedLink}</span>
+      <span className="AllowanceTextSmallScreen"> {this.formatAllowance(allowance.index)} ➤ </span>
 
-        <span className="AllowanceTextBigScreen">
-          Allowance for {this.formatAllowance(allowance.index)} to&nbsp;{regularLink}
-        </span>
-      </Form.Label>
+	  <span className="AllowanceTextBigScreen">{regularLink}</span>
+      <span className="AllowanceTextBigScreen"> {this.formatAllowance(allowance.index)} ➤ </span>
+
+      </div>
     )
   }
 
   renderRevokeButton(allowance: Allowance) {
     const canRevoke = this.props.inputAddress === this.props.signerAddress
 
-    let revokeButton = (
-      <Button
-        size="sm" disabled={!canRevoke}
-        className="RevokeButton"
-        onClick={() => this.revoke(allowance)}
-      >
-        Revoke
-      </Button>
-    )
+    let revokeButton = (<Button
+      size="sm" disabled={!canRevoke}
+      className="RevokeButton"
+      onClick={() => this.revoke(allowance)}
+    ></Button>)
 
     // Add tooltip if the button is disabled
     if (!canRevoke) {
       const tooltip = (<Tooltip id={`revoke-tooltip-${this.props.token.contract.address}`}>You can only revoke allowances of the connected account</Tooltip>)
-      revokeButton = (<OverlayTrigger overlay={tooltip}><span>{revokeButton}</span></OverlayTrigger>)
+      revokeButton = (<OverlayTrigger overlay={tooltip}><td><span>{revokeButton}</span></td></OverlayTrigger>)
     }
 
     return revokeButton

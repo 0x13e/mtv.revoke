@@ -128,7 +128,7 @@ class Erc20TokenList extends Component<Props, State> {
         />
       ))
 
-    return (<div className="TokenList">{tokenComponents}</div>)
+    return (<table className="TokenList"><tbody>{tokenComponents}</tbody></table>)
   }
 }
 

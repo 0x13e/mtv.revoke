@@ -1,6 +1,6 @@
 {
-  "name": "Revoke.cash - Revoke your ERC20 token allowances",
-  "short_name": "Revoke.cash",
+  "name": "mtv.revoke - revoke MRC20 token allowances",
+  "short_name": "mtv.revoke",
   "icons": [
     {
       "src": "favicon.ico",

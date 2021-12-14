@@ -108,7 +108,7 @@ class App extends Component<{}, State> {
 
   async connectSigner() {
     if (!window.ethereum && !window.web3) {
-      alert('Please use a web3 enabled browser to use revoke.cash')
+      alert('Please use a web3 enabled browser to use mtv.revoke')
       return
     }
 
@@ -182,14 +182,7 @@ class App extends Component<{}, State> {
   renderHeader() {
     return (
       <Row className="Header">
-        <Col className="my-auto">
-          <div className="only-mobile" style={{ float: 'left' }}>{this.renderDonateButton()}</div>
-        </Col>
-        <Col className="my-auto"><img className="logo" src="revoke.svg" alt="revoke.cash logo"/></Col>
-        <Col className="my-auto">
-          <div>{this.renderConnectButton()}</div>
-          <div className="only-desktop" style={{ float: 'right', marginRight: '10px' }}>{this.renderDonateButton()}</div>
-        </Col>
+        <Col className="my-auto"><img className="logo" src="revoke.svg" alt="mtv.revoke.ac logo"/></Col>
       </Row>
     )
   }
@@ -205,26 +198,21 @@ class App extends Component<{}, State> {
       : 'Connect web3'
 
     return (
-      <Button style={{ float: 'right' }} variant="outline-primary" onClick={() => this.connectWeb3()}>{text}</Button>
+      <Button style={{ border: '1px solid white' }} variant="primary" onClick={() => this.connectWeb3()}>{text}</Button>
     )
   }
 
   renderAddressInput() {
+
+  const text = this.state.signerAddress
+    ? this.state.signerEnsName || this.state.signerAddress
+    : 'Connect web3'
+
     return (
-      <Row>
-        <Col></Col>
+      <Row className="AddressRow">
         <Col className="my-auto" lg="6" md="12" sm="12">
-          <Form.Group>
-            <Form.Control
-              className="AddressInput text-center"
-              placeholder="Enter Ethereum address or ENS name"
-              value={this.state.inputAddressOrName || ''}
-              onChange={(event: ChangeEvent<HTMLInputElement>) => this.handleInputAddressChanged(event)}
-              onDoubleClick={() => { return }} // Re-enable double-click to select
-            ></Form.Control>
-          </Form.Group>
+          <Button className="web3Button my-auto AddressInput text-center" style={{width:'100%'}} onClick={() => this.connectWeb3()}>{text}</Button>
         </Col>
-        <Col></Col>
       </Row>
     )
   }
@@ -243,9 +231,8 @@ class App extends Component<{}, State> {
 
   renderFooter() {
     return (
-      <div>
-        <p>Site created by <a href="https://kalis.me/">Rosco Kalis</a> (<a href="https://github.com/rkalis/revoke.cash">Source</a>)</p>
-        <p>Learn more: <a href="https://kalis.me/unlimited-erc20-allowances/">Unlimited ERC20 allowances considered harmful</a></p>
+      <div className="footer">
+        <p>Forked from <a href="https://kalis.me/">Rosco Kalis's</a> (<a href="https://github.com/rkalis/revoke.cash">revoke.cash</a>)<br/>Please consider donating to him if you find this useful</p>
       </div>
     )
   }

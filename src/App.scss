@@ -2,9 +2,33 @@ $primary: black;
 $secondary: black;
 @import "bootstrap";
 
+html, body {
+height: 100%;
+}
+
+:root {
+  --revokeButtonSize: 30px;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   line-height: 1;
+  background:#000000;
+  color:#FFFFFF;
+}
+
+.App.container-fluid {
+    width:100% !important;
+    padding:0px !important;
+}
+
+.body-wrapper{
+  box-sizing: border-box;
+  width: 100%;
+  max-width:600px;
+  margin: auto;
+  padding: 0px 0 0;
+  color:white;
 }
 
 sup {
@@ -12,16 +36,20 @@ sup {
 }
 
 a:link {
-  color: blue;
+  color: white;
 }
 
 a:visited {
-  color: purple;
+  color: lightgray;
+  text-decoration: none;
 }
 
 .monospace {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-  font-size: 0.9em;
+  font-size:10px;
+  color:gray;
+  font-style:italic;
+  font-weight:bold;
 }
 
 .App {
@@ -29,21 +57,129 @@ a:visited {
 }
 
 .Header {
-  margin-bottom: 10px;
-  margin-top: 10px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  margin-left:10px;
+  margin-right:10px;
 }
 
 .logo {
   width: 100%;
-  max-width: 400px;
-  margin-top: 4%;
-  margin-bottom: 4%;
+  max-width: 175px;
+  max-height:100px;
+  min-width: 140px;
+}
+
+.logoMtv {
+    width: 100%;
+    max-width: 400px;
+    max-height:100px;
+}
+
+.colRight{
+    text-align: right;
+}
+
+.tokenSwitch {
+    margin-bottom:10px;
+}
+
+.zeroBalances {
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.checkSwitches {
+}
+
+.controlDiv {
+    width:100%;
+}
+
+.zeroCheckboxDiv{
+    padding-left: 20px;
+    display: table-cell;
+    vertical-align: middle;
+    font-weight: bold;
+    color:white;
+}
+
+.tokenStart {
+  	font-family:Arial, sans-serif;
+  	font-size:14px;
+  	overflow:hidden;
+  	word-break:normal;
+}
+
+.tokenBalanceText {
+  	font-family:Arial, sans-serif;
+  	font-size:14px;
+  	overflow:hidden;
+  	word-break:normal;
+}
+
+.spendLimitText {
+    width:10%;
+    padding-left:10px;
+  	font-family:Arial, sans-serif;
+  	font-size:14px;
+  	overflow:hidden;
+  	word-break:normal;
+}
+
+.switch-group {
+    border: 1px solid white;
+}
+
+.allowanceStart {
+}
+
+.spenderRow {
+    //border-top:1px solid rgba(255, 255, 255, .1);
+    padding-bottom:10px;
+}
+
+.spenderRevoke {
+    padding-bottom:4px;
+    min-width:var(--revokeButtonSize);
+    max-width:var(--revokeButtonSize);
+    min-height:var(--revokeButtonSize);
+    max-height:var(--revokeButtonSize);
+    height:var(--revokeButtonSize);
+}
+
+.spenderAddress {
+    padding-bottom:4px;
+}
+
+.spenderLimit {
+    padding-bottom:4px;
+    padding-right:20px;
+    text-align:right;
+}
+
+.spenderArrow {
+    padding-left:2px;
+    padding-right:2px;
+}
+
+.AddressRow{
+    margin-bottom:10px;
 }
 
 .AddressInput {
   color: black;
-  font-size: 1.2rem;
-  font-weight: 500;
+  background: #555555;
+  font-size:10px !important;
+  color:white;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.form-group{
+    margin-bottom:10px;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    font-style:italic;
+    font-weight:bold;
 }
 
 @media (max-width: 600px) {
@@ -51,25 +187,68 @@ a:visited {
     font-size: 1rem;
     font-weight: 400;
   }
+
+  .logo {
+      padding-bottom:5px;
+  }
+}
+
+.col-lg-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.col-md-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.col-sm-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
 }
 
 .TokenList {
-  padding: 10px;
+    width:100%;
+  padding: 0px;
 }
 
-@media (min-width: 1200px) {
-  .TokenList {
-    width: 80%;
-    margin: auto;
-  }
+
+.TokenList {
+margin: auto;
+background:#000000;
+overflow:hidden;
+border-radius:5px;
+font-family:Arial, sans-serif;
+font-size:14px;
+overflow:hidden;
+word-break:normal;
+justify-content: center;
+}
+
+.footer{
+   color:lightgray;
+   font-size: 12px;
+   padding-top:40px;
+   position: relative;
 }
 
 .Token {
   text-align: left;
-  padding: 3px;
+  border-top:1px solid #333333;
+}
+
+.TokenContentDiv {
+    padding-top:5px;
+}
+
+.TokenContentTable {
+    width:100%;
 }
 
 .TokenBalance {
+    padding-top:5px;
+    padding-bottom:5px;
   display: flex;
   align-items: center;
 }
@@ -82,8 +261,81 @@ a:visited {
   padding-left: 20px;
 }
 
-.Allowance {
-  margin-bottom: 2px;
+.AllowanceGoodText {
+  margin-bottom: 10px;
+}
+
+.Allowance{
+    margin:0px;
+}
+
+.iconImg {
+}
+
+.tokenName {
+    font-weight: bold;
+    width:100%;
+    padding-bottom:5px;
+}
+
+.tokenValue {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    padding-right:20px;
+    text-align: right;
+}
+
+.tokenIconColumn {
+   padding-right:10px;
+   border-radius:5px;
+   border:none;
+   font-size: 0.875rem;
+   text-align: center;
+   font-weight: bold;
+   background: url(mrc20.png);
+   background-size: 20px 20px;
+   height: 50px;
+   width: 40px;
+   min-width:40px;
+   background-position: top right;
+   background-repeat: no-repeat;
+}
+
+.tokenIconColumn721 {
+   padding-right:10px;
+   border-radius:5px;
+   border:none;
+   font-size: 0.875rem;
+   text-align: center;
+   font-weight: bold;
+   background: url(erc721.png);
+   background-size: 20px 20px;
+   height: 50px;
+   width: 40px;
+   min-width:40px;
+   background-position: top right;
+   background-repeat: no-repeat;
+}
+
+.tokenDataColumn {
+   padding-left:10px;
+}
+
+.tokenDataTable {
+    display:grid;
+}
+
+.fillit {
+    width:100%;
+}
+
+.rvkButton {
+  background:#8B0000;
+  width:var(--revokeButtonSize) !important;
+  height:var(--revokeButtonSize) !important;
+  border-radius: 5px;
+  margin:0px !important;
+  padding:0px !important;
+
 }
 
 .AllowanceText {
@@ -96,13 +348,18 @@ a:visited {
 
 // Make all buttons just a bit smaller so more information can fit on the screen
 .btn-sm {
-  padding: 0rem 0.4rem;
-  line-height: 1.4;
+  font-weight:bold;
+  background: url(delete.png);
+  background-size: var(--revokeButtonSize) var(--revokeButtonSize);
+  height: var(--revokeButtonSize);
+  width: var(--revokeButtonSize);
+  background-position: top right;
+  background-repeat: no-repeat;
+  display: flex;
 }
 
 .input-group-sm > .input-group-append > .btn {
-  padding: 0rem 0.4rem;
-  line-height: 1.4;
+
 }
 
 .input-group-sm > .form-control:not(textarea) {
@@ -124,18 +381,24 @@ a:visited {
   }
 }
 
+.web3Button:hover {
+    color: #fff;
+    background-color: black;
+    border-color: white;
+}
+
 // Around 850px the full address doesn't fit on the screen any more,
 // so we move to a shortened version of the address
 .AllowanceTextSmallScreen { display: none; }
 .AllowanceTextBigScreen { display: inline; }
-@media (max-width: 850px) {
+@media (max-width: 400px) {
   .AllowanceTextSmallScreen { display: inline; }
   .AllowanceTextBigScreen { display: none; }
 }
 
 .only-mobile { display: none; }
 .only-desktop { display: inherit; }
-@media (max-width: 850px) {
+@media (max-width: 400px) {
   .only-mobile { display: inherit; }
   .only-desktop { display: none; }
 }
