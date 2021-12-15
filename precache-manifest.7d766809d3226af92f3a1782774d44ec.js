@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "fa9a9dcc001c58d9c3d27832716e9b12",
+    "revision": "1914531eb38a6f22be115b7c6fa4f8a7",
     "url": "/mtv.revoke/index.html"
   },
   {
