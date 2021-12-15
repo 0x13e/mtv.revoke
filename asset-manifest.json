@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/mtv.revoke/static/css/main.7a5c2649.chunk.css",
+    "main.js": "/mtv.revoke/static/js/main.b283ee93.chunk.js",
+    "main.js.map": "/mtv.revoke/static/js/main.b283ee93.chunk.js.map",
+    "runtime-main.js": "/mtv.revoke/static/js/runtime-main.c170d88b.js",
+    "runtime-main.js.map": "/mtv.revoke/static/js/runtime-main.c170d88b.js.map",
+    "static/css/2.eec3eed8.chunk.css": "/mtv.revoke/static/css/2.eec3eed8.chunk.css",
+    "static/js/2.e36a4c71.chunk.js": "/mtv.revoke/static/js/2.e36a4c71.chunk.js",
+    "static/js/2.e36a4c71.chunk.js.map": "/mtv.revoke/static/js/2.e36a4c71.chunk.js.map",
+    "index.html": "/mtv.revoke/index.html",
+    "precache-manifest.adc97ab7792096f925942001c98528a8.js": "/mtv.revoke/precache-manifest.adc97ab7792096f925942001c98528a8.js",
+    "service-worker.js": "/mtv.revoke/service-worker.js",
+    "static/css/2.eec3eed8.chunk.css.map": "/mtv.revoke/static/css/2.eec3eed8.chunk.css.map",
+    "static/css/main.7a5c2649.chunk.css.map": "/mtv.revoke/static/css/main.7a5c2649.chunk.css.map",
+    "static/js/2.e36a4c71.chunk.js.LICENSE.txt": "/mtv.revoke/static/js/2.e36a4c71.chunk.js.LICENSE.txt",
+    "static/media/App.scss": "/mtv.revoke/static/media/mrc20.f9a3852d.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c170d88b.js",
+    "static/css/2.eec3eed8.chunk.css",
+    "static/js/2.e36a4c71.chunk.js",
+    "static/css/main.7a5c2649.chunk.css",
+    "static/js/main.b283ee93.chunk.js"
+  ]
+}
