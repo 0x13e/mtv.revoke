@@ -255,37 +255,9 @@ class Erc721Token extends Component<Props, State> {
 	  	  </td>
 	  	  <td className="spenderAddress"><span className="AllowanceTextBigScreen">{regularLink}</span><span className="AllowanceTextSmallScreen">{shortenedLink}</span>
 	  	  </td>
-	  	  <td className="spenderLimit"><span className="monospace"> {this.renderAllowanceText(allowance)}</span>
+	  	  <td className="spenderLimit"><span className="monospace">{this.formatAllowance(allowance.index)}</span>
 	      </td>
         </tr>
-    )
-  }
-
-  renderAllowanceText(allowance: Allowance) {
-    const spender = allowance.spenderAppName || allowance.ensSpender || allowance.spender
-    const shortenedSpender = allowance.spenderAppName || allowance.ensSpender || shortenAddress(allowance.spender)
-
-    const explorerBaseUrl = getExplorerUrl(this.props.chainId)
-
-    const shortenedLink = explorerBaseUrl
-      ? (<a className="monospace" href={`${explorerBaseUrl}/${allowance.spender}`}>{shortenedSpender}</a>)
-      : shortenedSpender
-
-    const regularLink = explorerBaseUrl
-      ? (<a className="monospace" href={`${explorerBaseUrl}/${allowance.spender}`}>{spender}</a>)
-      : spender
-
-    // Display separate spans for the regular and shortened versions of the spender address
-    // The correct one is selected using CSS media-queries
-    return (
-      <div>
-      <span className="AllowanceTextSmallScreen">{shortenedLink}</span>
-      <span className="AllowanceTextSmallScreen"> {this.formatAllowance(allowance.index)} ➤ </span>
-
-	  <span className="AllowanceTextBigScreen">{regularLink}</span>
-      <span className="AllowanceTextBigScreen"> {this.formatAllowance(allowance.index)} ➤ </span>
-
-      </div>
     )
   }
 
